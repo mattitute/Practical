@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Final Preparation</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        .pre-scrollable{
+            height:500px;
+            overflow-y: scroll;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Saving Investment Record</h1>
+<div class="container mt-2 pre-scrollable">
+    <div class="card-header">Student List </div>
+    <div class="card-body">
+        <div th:if="${exists}" class="alert alert-danger" role="alert">
+            The record already exists.
+        </div>
+        <table class="table">
+    <thead>
+    <tr>
+        <th>Customer Number</th><th>Customer Name</th><th>Customer Deposit</th><th>Number of Years</th><th>Saving Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p:${listSavings}">
+        <td th:text="${p.getCustno()}"></td>
+        <td th:text="${p.getCustname()}"></td>
+        <td th:text="${p.getCdep()}"></td>
+        <td th:text="${p.getNyears()}"></td>
+        <td th:text="${p.getSavtype()}"></td>
+        <td>
+            <a class="btn btn-primary" th:href="@{editSavings(id=${p.custno})}">Edit</a>
+            <a class="btn btn-warning" onClick="return confirm('Are you sure you want to delete the record ?')"
+               th:href="@{delete(id=${p.custno})}">Delete</a>
+        </td>
+        <td>
+            <a class="btn btn-primary" th:href="@{editStudents(id=${p.custno})}">Projected Investment</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+        <div class="mt-3">
+            <a class="btn btn-success" th:href="@{formSavings}">Add</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
