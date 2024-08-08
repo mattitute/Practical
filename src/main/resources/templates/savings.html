@@ -18,7 +18,7 @@
 <body>
 <h1>Saving Investment Record</h1>
 <div class="container mt-2 pre-scrollable">
-    <div class="card-header">Student List </div>
+    <div class="card-header">The following are the saving records. </div>
     <div class="card-body">
         <div th:if="${exists}" class="alert alert-danger" role="alert">
             The record already exists.
@@ -42,7 +42,7 @@
                th:href="@{delete(id=${p.custno})}">Delete</a>
         </td>
         <td>
-            <a class="btn btn-primary" th:href="@{editStudents(id=${p.custno})}">Projected Investment</a>
+            <a class="btn btn-primary" th:href="@{viewSaving(id=${p.custno})}">Projected Investment</a>
         </td>
     </tr>
     </tbody>
